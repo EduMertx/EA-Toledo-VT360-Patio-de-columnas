@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>TOUR VIRTUAL EAT</title>
+<meta charset="utf-8">
+<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
+<style> @-ms-viewport { width: device-width; } </style>
+<link rel="stylesheet" href="vendor/reset.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="multiple-scenes view-control-buttons">
+
+<div id="pano"></div>
+
+<!-- Custom top toolbar that replaces the default Marzipano title bar and side list -->
+<aside id="tourNavigator" class="tour-panel">
+  <div class="tour-toolbar">
+    <div class="tour-controls">
+    <label class="tour-field tour-field-location" for="locationSelect">
+      <select id="locationSelect" class="tour-select-native">
+        <option value="">Selecciona una ubicación</option>
+      </select>
+      <div class="tour-dropdown" data-dropdown="location">
+        <button class="tour-dropdown-button" type="button">
+          <span class="tour-dropdown-value">Ubicación</span>
+          <img class="tour-dropdown-arrow" src="img/flechadesplegable.png" alt="">
+        </button>
+        <div class="tour-dropdown-menu"></div>
+      </div>
+    </label>
+
+    <label id="floorField" class="tour-field tour-field-floor is-disabled" for="floorSelect">
+      <select id="floorSelect" class="tour-select-native" disabled>
+        <option value="">Selecciona una planta</option>
+      </select>
+      <div class="tour-dropdown" data-dropdown="floor">
+        <button class="tour-dropdown-button" type="button">
+          <span class="tour-dropdown-value">Planta</span>
+          <img class="tour-dropdown-arrow" src="img/flechadesplegable.png" alt="">
+        </button>
+        <div class="tour-dropdown-menu"></div>
+      </div>
+    </label>
+
+    <label id="pieceField" class="tour-field tour-field-piece is-disabled" for="pieceSelect">
+      <select id="pieceSelect" class="tour-select-native" disabled>
+        <option value="">Selecciona una pieza</option>
+      </select>
+      <div class="tour-dropdown" data-dropdown="piece">
+        <button class="tour-dropdown-button" type="button">
+          <span class="tour-dropdown-value">Pieza</span>
+          <img class="tour-dropdown-arrow" src="img/flechadesplegable.png" alt="">
+        </button>
+        <div class="tour-dropdown-menu"></div>
+      </div>
+    </label>
+    </div>
+
+    <button id="mapToggle" class="tour-map-toggle" type="button" aria-expanded="false" aria-controls="tourMapPanel" aria-label="Mostrar mapa">
+      <img class="tour-map-toggle-icon" src="img/mapa.png" alt="">
+    </button>
+  </div>
+
+  <!-- Floating map panel controlled by the "Mapa" button -->
+  <section id="tourMapPanel" class="tour-map-panel is-hidden" aria-label="Mapa del recorrido">
+    <div id="tourMap" class="tour-map">
+      <img id="mapImage" class="tour-map-image" alt="Mapa de la selección actual">
+      <div id="mapMarkers" class="tour-map-markers"></div>
+      <div id="mapEmptyState" class="tour-map-empty">Selecciona una ubicación para cargar el mapa.</div>
+    </div>
+  </section>
+</aside>
+
+<div id="sceneList">
+  <ul class="scenes">
+    
+      <a href="javascript:void(0)" class="scene" data-id="0-01-lauda-sepulcral-de-lorenzo-surez-de-figueroa">
+        <li class="text">01. Lauda sepulcral de Lorenzo Suárez de Figueroa</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="1-02-los-discpulos-de-emas">
+        <li class="text">02. Los discípulos de Emaús</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="2-03-la-duda-de-santo-toms">
+        <li class="text">03. La duda de Santo Tomás</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="3-04-puerta-de-la-capilla-del-sagrario">
+        <li class="text">04. Puerta de la Capilla del Sagrario</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="4-05-la-ascensin-de-cristo">
+        <li class="text">05. La Ascensión de Cristo</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="5-06-la-incredulidad-de-santo-toms">
+        <li class="text">06. La incredulidad de Santo Tomás</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="6-07-la-esclava">
+        <li class="text">07. La esclava</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="7-08-busto-de-leonor-de-aragn">
+        <li class="text">08. Busto de Leonor de Aragón</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="8-09-busto-del-papa-po-vi">
+        <li class="text">09. Busto del Papa Pío VI</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="9-10-la-romana-tulia">
+        <li class="text">10. La romana Tulia</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="10-11-goya">
+        <li class="text">11. Goya</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="11-12-mercurio--hermes">
+        <li class="text">12. Mercurio / Hermes</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="12-13-cabeza-de-giuliano-de-mdicis">
+        <li class="text">13. Cabeza de Giuliano de Médicis</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="13-14-augusto-joven">
+        <li class="text">14. Augusto joven</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="14-15-rostro-de-miguel-ngel">
+        <li class="text">15. Rostro de Miguel Ángel</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="15-16-faustina-la-menor">
+        <li class="text">16. Faustina la Menor</li>
+      </a>
+    
+      <a href="javascript:void(0)" class="scene" data-id="16-17-stiro-flautista">
+        <li class="text">17. Sátiro flautista</li>
+      </a>
+    
+  </ul>
+</div>
+
+<div id="titleBar">
+  <h1 class="sceneName"></h1>
+</div>
+
+<a href="javascript:void(0)" id="autorotateToggle">
+  <img class="icon off" src="img/play.png">
+  <img class="icon on" src="img/pause.png">
+</a>
+
+<a href="javascript:void(0)" id="fullscreenToggle">
+  <img class="icon off" src="img/fullscreen.png">
+  <img class="icon on" src="img/windowed.png">
+</a>
+
+<a href="javascript:void(0)" id="sceneListToggle">
+  <img class="icon off" src="img/expand.png">
+  <img class="icon on" src="img/collapse.png">
+</a>
+
+<a href="javascript:void(0)" id="viewUp" class="viewControlButton viewControlButton-1">
+  <img class="icon" src="img/up.png">
+</a>
+<a href="javascript:void(0)" id="viewDown" class="viewControlButton viewControlButton-2">
+  <img class="icon" src="img/down.png">
+</a>
+<a href="javascript:void(0)" id="viewLeft" class="viewControlButton viewControlButton-3">
+  <img class="icon" src="img/left.png">
+</a>
+<a href="javascript:void(0)" id="viewRight" class="viewControlButton viewControlButton-4">
+  <img class="icon" src="img/right.png">
+</a>
+<a href="javascript:void(0)" id="viewIn" class="viewControlButton viewControlButton-5">
+  <img class="icon" src="img/plus.png">
+</a>
+<a href="javascript:void(0)" id="viewOut" class="viewControlButton viewControlButton-6">
+  <img class="icon" src="img/minus.png">
+</a>
+
+<a href="javascript:void(0)" id="gyroToggle" class="floatingUtilityButton" aria-label="Giroscopio" aria-pressed="false">
+  <img class="icon" src="img/giroscopio.png">
+</a>
+
+<script src="vendor/screenfull.min.js" ></script>
+<script src="vendor/bowser.min.js" ></script>
+<script src="vendor/marzipano.js" ></script>
+<script src="DeviceOrientationControlMethod.js"></script>
+
+<script src="data.js"></script>
+<script src="index.js"></script>
+
+</body>
+</html>
